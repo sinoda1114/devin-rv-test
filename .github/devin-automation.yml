@@ -1,0 +1,45 @@
+# Project-local configuration for Devin Review PR Automation.
+# Adjust quality.commands for this repository before enabling auto-merge.
+
+quality:
+  allowEmpty: false
+  commands:
+    - name: Install dependencies
+      run: npm ci
+    - name: Lint
+      run: npm run lint --if-present
+    - name: Typecheck
+      run: npm run typecheck --if-present
+    - name: Test
+      run: npm test --if-present
+    - name: Build
+      run: npm run build --if-present
+
+risk:
+  maxChangedFiles: 10
+  maxDiffLines: 300
+  maxAutofixCount: 1
+  requireDevinReviewSignal: false
+  commentOnFailure: true
+  devinReviewBotLogins:
+    - devin-ai-integration[bot]
+    - devin-ai[bot]
+    - devin[bot]
+  highRiskPatterns:
+    - .github/workflows/**
+    - package.json
+    - package-lock.json
+    - pnpm-lock.yaml
+    - yarn.lock
+    - bun.lockb
+    - "**/migrations/**"
+    - "**/migration/**"
+    - "**/schema/**"
+    - "**/auth/**"
+    - "**/authorization/**"
+    - "**/payment/**"
+    - "**/billing/**"
+    - "**/terraform/**"
+    - "**/*.tf"
+    - "**/.env*"
+    - "**/secrets/**"

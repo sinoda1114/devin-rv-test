@@ -1,0 +1,12 @@
+{
+  "name": "devin-rv-test",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node --check src/calculator.js && node --check test/calculator.test.js",
+    "typecheck": "node --check src/calculator.js && node --check test/calculator.test.js",
+    "test": "node --test",
+    "build": "node scripts/build.js"
+  }
+}
